@@ -181,25 +181,25 @@ const BacktestPanel = ({ fullData }) => {
     if (!fullData) return null;
 
     return (
-        <div className="flex flex-col gap-6 md:gap-10">
+        <div className="flex flex-col gap-4 md:gap-10">
             {/* 1. Configuration Section (Refined & Cleaner) */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                <div className="px-4 md:px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                <div className="px-3 py-3 md:px-6 md:py-4 border-b border-gray-100 flex flex-col md:flex-row justify-between items-stretch md:items-center bg-gray-50 gap-3 md:gap-0">
                     <h2 className="text-base font-bold text-gray-800 flex items-center gap-2">
                         <Activity className="w-5 h-5 text-blue-500" />
                         Backtest Configuration
                     </h2>
                     <button
                         onClick={runBacktest}
-                        className="flex items-center gap-2 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold shadow-md transition-all active:scale-95 text-lg"
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 md:px-8 md:py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold shadow-md transition-all active:scale-95 text-sm md:text-lg w-full md:w-auto"
                     >
-                        <Play className="w-5 h-5 fill-white" />
+                        <Play className="w-4 h-4 md:w-5 md:h-5 fill-white" />
                         Run Simulation
                     </button>
                 </div>
 
-                <div className="p-4 md:p-6">
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
+                <div className="p-3 md:p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-8">
 
                         {/* Time Period - Col Span 4 */}
                         <div className="md:col-span-4 flex flex-col gap-3">
@@ -289,7 +289,7 @@ const BacktestPanel = ({ fullData }) => {
 
             {/* 2. Results Section (Stats + Charts) */}
             {stats && (
-                <div className="flex flex-col gap-6 md:gap-8">
+                <div className="flex flex-col gap-4 md:gap-8">
                     {/* Hero Stats */}
                     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
                         <StatCard label="Start Capital" value={`₹${(stats.initialCapital / 100000).toFixed(2)} L`} />

@@ -13,7 +13,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8 font-sans">
+    <div className="min-h-screen bg-gray-50 p-4 md:p-8 font-sans">
       <div className="max-w-7xl mx-auto space-y-8">
         <header className="flex flex-col gap-2">
           <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
