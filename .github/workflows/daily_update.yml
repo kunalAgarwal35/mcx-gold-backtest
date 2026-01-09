@@ -1,0 +1,53 @@
+name: Daily Gold Data Update
+
+on:
+  schedule:
+    # Run daily at 12:30 UTC (6:00 PM IST)
+    - cron: '30 12 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Fetch latest data
+        run: |
+          python fetch_gold_history.py
+
+      - name: Process analysis data
+        run: |
+          python process_analysis.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Add potentially new/modified files
+          git add gold_daily_ohlc/
+          git add gold_analysis_dashboard/public/data.json
+          
+          # Commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "auto: update gold data [skip ci]"
+            git push
+          fi
