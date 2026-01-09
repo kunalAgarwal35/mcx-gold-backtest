@@ -186,14 +186,14 @@ const BacktestPanel = ({ fullData }) => {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <div className="px-4 md:px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
                     <h2 className="text-base font-bold text-gray-800 flex items-center gap-2">
-                        <Activity className="w-5 h-5 text-indigo-600" />
+                        <Activity className="w-5 h-5 text-blue-500" />
                         Backtest Configuration
                     </h2>
                     <button
                         onClick={runBacktest}
-                        className="flex items-center gap-2 px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold shadow-sm transition-all active:scale-95 text-sm"
+                        className="flex items-center gap-2 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold shadow-md transition-all active:scale-95 text-lg"
                     >
-                        <Play className="w-4 h-4 fill-white" />
+                        <Play className="w-5 h-5 fill-white" />
                         Run Simulation
                     </button>
                 </div>
@@ -213,7 +213,7 @@ const BacktestPanel = ({ fullData }) => {
                                     <div className="flex justify-between items-center mb-1.5">
                                         <span className="text-[10px] text-gray-400 font-semibold block uppercase tracking-wider">End Date</span>
                                         <button
-                                            className="text-[10px] text-indigo-600 font-bold hover:text-indigo-800 tracking-wide transition-colors"
+                                            className="text-[10px] text-blue-500 font-bold hover:text-blue-700 tracking-wide transition-colors"
                                             onClick={() => setConfig({ ...config, endDate: new Date().toISOString().split('T')[0] })}
                                         >
                                             MAX
@@ -251,7 +251,7 @@ const BacktestPanel = ({ fullData }) => {
                             <div className="space-y-3">
                                 <div className="flex items-center justify-between h-10 px-1">
                                     <label htmlFor="neverCompound" className="flex items-center gap-2 cursor-pointer select-none group">
-                                        <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${config.neverCompound ? 'bg-indigo-600 border-indigo-600' : 'border-gray-300 bg-white group-hover:border-indigo-400'}`}>
+                                        <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${config.neverCompound ? 'bg-blue-500 border-blue-500' : 'border-gray-300 bg-white group-hover:border-blue-400'}`}>
                                             {config.neverCompound && <div className="w-2 h-2 bg-white rounded-[1px]" />}
                                         </div>
                                         <span className="text-xs text-gray-600 font-medium">Never Compound</span>
@@ -273,7 +273,7 @@ const BacktestPanel = ({ fullData }) => {
                                             name="compoundingFactor"
                                             value={config.compoundingFactor}
                                             onChange={handleChange}
-                                            className="w-12 border-b border-gray-300 focus:border-indigo-600 bg-transparent text-center outline-none font-bold text-gray-900 px-0.5"
+                                            className="w-12 border-b border-gray-300 focus:border-blue-500 bg-transparent text-center outline-none font-bold text-gray-900 px-0.5"
                                         />
                                         <span>% Profit</span>
                                     </div>
@@ -305,7 +305,7 @@ const BacktestPanel = ({ fullData }) => {
                         <div className="lg:col-span-2 bg-white p-3 md:p-6 rounded-xl border border-gray-200 shadow-sm min-h-[420px]">
                             <div className="flex justify-between items-center mb-6 px-1">
                                 <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Equity Growth</h3>
-                                <div className="text-xs font-medium text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
+                                <div className="text-xs font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
                                     Current Lots: {equityCurve[equityCurve.length - 1]?.lots}
                                 </div>
                             </div>
@@ -424,12 +424,12 @@ const LabelRow = ({ label, icon }) => (
 const InputField = (props) => (
     <input
         {...props}
-        className="w-full h-10 px-3 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all bg-gray-50 focus:bg-white text-gray-900 font-medium placeholder-gray-400"
+        className="w-full h-10 px-3 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all bg-gray-50 focus:bg-white text-gray-900 font-medium placeholder-gray-400"
     />
 );
 
 const StatCard = ({ label, value, highlight, color = "text-gray-900", subtitle }) => (
-    <div className={`p-4 md:p-5 rounded-xl border flex flex-col justify-between h-28 ${highlight ? 'bg-indigo-50/50 border-indigo-100 shadow-sm' : 'bg-white border-gray-100 hover:border-gray-200 transition-colors'}`}>
+    <div className={`p-4 md:p-5 rounded-xl border flex flex-col justify-between h-28 ${highlight ? 'bg-blue-50/50 border-blue-100 shadow-sm' : 'bg-white border-gray-100 hover:border-gray-200 transition-colors'}`}>
         <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">{label}</p>
         <div>
             <p className={`text-lg md:text-xl font-extrabold tracking-tight ${color}`}>{value}</p>

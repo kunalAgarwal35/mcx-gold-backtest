@@ -66,7 +66,7 @@ const PremiumChart = () => {
 
                 <button
                     onClick={toggleFullScreen}
-                    className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
+                    className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
                     title={isFullScreen ? "Exit Full Screen" : "Full Screen"}
                 >
                     {isFullScreen ? <Minimize2 className="w-6 h-6" /> : <Maximize2 className="w-5 h-5" />}
@@ -186,10 +186,10 @@ const PremiumChart = () => {
 
             {/* Methodology Footer - Hidden in Full Screen */}
             {!isFullScreen && (
-                <div className="mt-6 flex items-start gap-3 bg-indigo-50/50 p-4 rounded-xl border border-indigo-50 text-xs text-slate-600 leading-relaxed shrink-0">
-                    <AlertCircle className="w-4 h-4 mt-0.5 text-indigo-500 flex-shrink-0" />
+                <div className="mt-6 flex items-start gap-3 bg-blue-50/50 p-4 rounded-xl border border-blue-50 text-xs text-slate-600 leading-relaxed shrink-0">
+                    <AlertCircle className="w-4 h-4 mt-0.5 text-blue-500 flex-shrink-0" />
                     <div>
-                        <strong className="block text-indigo-900 mb-1">Rollover Methodology - 7 Day Rule</strong>
+                        <strong className="block text-blue-900 mb-1">Rollover Methodology - 7 Day Rule</strong>
                         <p>
                             The chart tracks the premium of the <strong>Near Month</strong> contract relative to the <strong>Far Month</strong> contract.
                             To simulate a continuous perpetual position, we switch (roll over) from the Near contract to the Far contract exactly
