@@ -367,46 +367,44 @@ const BacktestPanel = ({ fullData }) => {
                             <span className="text-xs text-gray-400 font-medium">{tradeLog.length} Events Logged</span>
                         </div>
                         <div className="max-h-[400px] overflow-x-auto">
-                            <div className="min-w-[600px] align-middle inline-block">
-                                <table className="min-w-full text-sm text-center">
-                                    <thead className="text-xs text-gray-400 uppercase bg-gray-50 sticky top-0 z-10">
-                                        <tr>
-                                            <th className="py-3 px-4 text-left font-semibold whitespace-nowrap">Date</th>
-                                            <th className="py-3 px-4 font-semibold whitespace-nowrap">Type</th>
-                                            <th className="py-3 px-4 font-semibold text-left whitespace-nowrap">Details</th>
-                                            <th className="py-3 px-4 text-right font-semibold whitespace-nowrap">Prices (S / B)</th>
-                                            <th className="py-3 px-4 text-right font-semibold whitespace-nowrap">Gross PnL</th>
-                                            <th className="py-3 px-4 text-right font-semibold whitespace-nowrap">Net PnL</th>
+                            <table className="w-full min-w-[600px] text-sm text-center">
+                                <thead className="text-xs text-gray-400 uppercase bg-gray-50 sticky top-0 z-10">
+                                    <tr>
+                                        <th className="py-3 px-4 text-left font-semibold whitespace-nowrap">Date</th>
+                                        <th className="py-3 px-4 font-semibold whitespace-nowrap">Type</th>
+                                        <th className="py-3 px-4 font-semibold text-left whitespace-nowrap">Details</th>
+                                        <th className="py-3 px-4 text-right font-semibold whitespace-nowrap">Prices (S / B)</th>
+                                        <th className="py-3 px-4 text-right font-semibold whitespace-nowrap">Gross PnL</th>
+                                        <th className="py-3 px-4 text-right font-semibold whitespace-nowrap">Net PnL</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-gray-100">
+                                    {tradeLog.map((t, idx) => (
+                                        <tr key={idx} className="hover:bg-gray-50/50 transition-colors group">
+                                            <td className="py-3 px-4 text-left font-medium text-gray-600 whitespace-nowrap">{t.date}</td>
+                                            <td className="py-3 px-4 whitespace-nowrap">
+                                                <span className={`inline-flex px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wide ${t.type === 'Compounding' ? 'bg-purple-50 text-purple-700 border border-purple-100' : 'bg-blue-50 text-blue-700 border border-blue-100'}`}>
+                                                    {t.type}
+                                                </span>
+                                            </td>
+                                            <td className="py-3 px-4 text-left text-gray-500 text-xs whitespace-nowrap">
+                                                <div>{t.contracts}</div>
+                                                {t.lots > 1 && <div className="text-[10px] text-gray-400 mt-0.5">Size: {t.lots} kg</div>}
+                                            </td>
+                                            <td className="py-3 px-4 text-right text-gray-500 text-xs font-mono whitespace-nowrap">
+                                                {t.sellPrice ? <div className="flex justify-end gap-2"><span>{t.sellPrice}</span><span className="text-gray-300">→</span><span className="text-gray-700 font-bold">{t.buyPrice}</span></div> : '-'}
+                                            </td>
+                                            <td className={`py-3 px-4 text-right font-medium text-xs whitespace-nowrap ${t.grossPnL > 0 ? 'text-emerald-600' : t.grossPnL < 0 ? 'text-rose-500' : 'text-gray-400'}`}>
+                                                {t.grossPnL ? `₹${Math.round(t.grossPnL).toLocaleString()}` : '-'}
+                                                {t.cost > 0 && <div className="text-[10px] text-gray-400 mt-0.5 font-normal">Cost: -{t.cost}</div>}
+                                            </td>
+                                            <td className={`py-3 px-4 text-right font-bold text-sm whitespace-nowrap ${t.netPnL > 0 ? 'text-emerald-600' : t.netPnL < 0 ? 'text-rose-500' : 'text-gray-400'}`}>
+                                                {t.netPnL ? `₹${Math.round(t.netPnL).toLocaleString()}` : '-'}
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-gray-100">
-                                        {tradeLog.map((t, idx) => (
-                                            <tr key={idx} className="hover:bg-gray-50/50 transition-colors group">
-                                                <td className="py-3 px-4 text-left font-medium text-gray-600 whitespace-nowrap">{t.date}</td>
-                                                <td className="py-3 px-4 whitespace-nowrap">
-                                                    <span className={`inline-flex px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wide ${t.type === 'Compounding' ? 'bg-purple-50 text-purple-700 border border-purple-100' : 'bg-blue-50 text-blue-700 border border-blue-100'}`}>
-                                                        {t.type}
-                                                    </span>
-                                                </td>
-                                                <td className="py-3 px-4 text-left text-gray-500 text-xs whitespace-nowrap">
-                                                    <div>{t.contracts}</div>
-                                                    {t.lots > 1 && <div className="text-[10px] text-gray-400 mt-0.5">Size: {t.lots} kg</div>}
-                                                </td>
-                                                <td className="py-3 px-4 text-right text-gray-500 text-xs font-mono whitespace-nowrap">
-                                                    {t.sellPrice ? <div className="flex justify-end gap-2"><span>{t.sellPrice}</span><span className="text-gray-300">→</span><span className="text-gray-700 font-bold">{t.buyPrice}</span></div> : '-'}
-                                                </td>
-                                                <td className={`py-3 px-4 text-right font-medium text-xs whitespace-nowrap ${t.grossPnL > 0 ? 'text-emerald-600' : t.grossPnL < 0 ? 'text-rose-500' : 'text-gray-400'}`}>
-                                                    {t.grossPnL ? `₹${Math.round(t.grossPnL).toLocaleString()}` : '-'}
-                                                    {t.cost > 0 && <div className="text-[10px] text-gray-400 mt-0.5 font-normal">Cost: -{t.cost}</div>}
-                                                </td>
-                                                <td className={`py-3 px-4 text-right font-bold text-sm whitespace-nowrap ${t.netPnL > 0 ? 'text-emerald-600' : t.netPnL < 0 ? 'text-rose-500' : 'text-gray-400'}`}>
-                                                    {t.netPnL ? `₹${Math.round(t.netPnL).toLocaleString()}` : '-'}
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
