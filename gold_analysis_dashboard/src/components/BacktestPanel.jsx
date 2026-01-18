@@ -9,11 +9,11 @@ const BacktestPanel = ({ fullData }) => {
         startDate: '2014-01-01',
         endDate: new Date().toISOString().split('T')[0],
         initialLots: 1,
-        initialMarginPercent: 12,
+        initialMarginPercent: 30,
         transactionCost: 1800,
         compoundingFactor: 200,
-        isCompounding: true,
-        neverCompound: false
+        isCompounding: false,
+        neverCompound: true
     });
 
     // --- Results State ---
