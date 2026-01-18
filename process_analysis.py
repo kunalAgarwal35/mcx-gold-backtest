@@ -136,7 +136,9 @@ def calculate_premium(df):
             "price_near": p1,
             "price_far": p2,
             "expiry_near": e1['ExpiryDate'].strftime('%d%b%Y'),
-            "expiry_far": e2['ExpiryDate'].strftime('%d%b%Y')
+            "expiry_far": e2['ExpiryDate'].strftime('%d%b%Y'),
+            "expiry_near_date": e1['ExpiryDate'].strftime('%Y-%m-%d'),  # Add expiry date for backtest validation
+            "expiry_far_date": e2['ExpiryDate'].strftime('%Y-%m-%d')
         })
         
     return results

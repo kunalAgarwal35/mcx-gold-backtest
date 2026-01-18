@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, ComposedChart, ReferenceArea } from 'recharts';
 import { Play, Activity, Calendar, DollarSign } from 'lucide-react';
 
 const BacktestPanel = ({ fullData }) => {
@@ -43,6 +43,10 @@ const BacktestPanel = ({ fullData }) => {
         let entryPrice = startPrice;
         let baselineCapital = initialCapital;
         let peakEquity = initialCapital;
+        
+        // Track current contract expiry
+        let currentContractExpiry = data[0].expiry_near_date || null;
+        let currentContractExpiryStr = data[0].expiry_near || null;
 
         let equitySeries = [];
         let drawdownSeries = [];
@@ -52,12 +56,68 @@ const BacktestPanel = ({ fullData }) => {
         for (let i = 0; i < data.length; i++) {
             const today = data[i];
             const prev = i > 0 ? data[i - 1] : null;
+            const todayDate = new Date(today.date);
 
-            // Check Rollover
+            // Check if we need to rollover (7 days before expiry)
+            let shouldRollover = false;
+            let rolloverReason = "";
+            let sellPrice = null;
+            let buyPrice = null;
+            let oldContractStr = currentContractExpiryStr;
+            
+            if (currentContractExpiry) {
+                const expiryDate = new Date(currentContractExpiry);
+                const daysToExpiry = Math.floor((expiryDate - todayDate) / (1000 * 60 * 60 * 24));
+                
+                // Rollover if we're 7 days or less from expiry
+                if (daysToExpiry <= 7 && daysToExpiry >= 0) {
+                    shouldRollover = true;
+                    rolloverReason = `7-day rule (${daysToExpiry} days to expiry)`;
+                    // Use previous day's price for selling (old contract)
+                    // Use today's price_far for buying (next contract - the one we're rolling into)
+                    sellPrice = prev ? prev.price_near : today.price_near;
+                    buyPrice = today.price_far || today.price_near; // Next contract price (far leg)
+                }
+                // Also rollover if expiry has passed (shouldn't happen, but safety check)
+                else if (daysToExpiry < 0) {
+                    shouldRollover = true;
+                    rolloverReason = `Expiry passed (${Math.abs(daysToExpiry)} days ago)`;
+                    sellPrice = prev ? prev.price_near : today.price_near;
+                    buyPrice = today.price_near;
+                }
+            }
+            
+            // If expiry_near changed in data, check if we need to rollover
+            // Only rollover if we're still holding the old contract (haven't rolled over yet)
             if (prev && today.expiry_near !== prev.expiry_near) {
-                const sellPrice = prev.price_near;
-                const buyPrice = prev.price_far;
-
+                // Check if we're still holding the old contract
+                const stillHoldingOldContract = currentContractExpiryStr === prev.expiry_near;
+                
+                // Only rollover if:
+                // 1. We haven't already decided to rollover (from 7-day rule), AND
+                // 2. We're still holding the old contract (meaning we missed the 7-day window), AND
+                // 3. The old contract hasn't expired yet (we can still rollover)
+                if (!shouldRollover && stillHoldingOldContract) {
+                    // Check if old contract hasn't expired
+                    const oldExpiryDate = prev.expiry_near_date ? new Date(prev.expiry_near_date) : null;
+                    if (oldExpiryDate && todayDate <= oldExpiryDate) {
+                        shouldRollover = true;
+                        rolloverReason = `Contract switched in data (missed 7-day window)`;
+                        sellPrice = prev.price_near; // Old contract price
+                        buyPrice = today.price_far || today.price_near; // New contract price (use far if available)
+                        oldContractStr = prev.expiry_near;
+                    }
+                }
+                // DO NOT update tracking here - only update after actual rollover
+                // This ensures we check the 7-day rule against the correct contract
+            }
+            
+            // Perform rollover if needed
+            if (shouldRollover && sellPrice !== null && buyPrice !== null) {
+                // Determine the new contract (use expiry_far if available, else expiry_near)
+                const newContractStr = today.expiry_far || today.expiry_near;
+                const newContractExpiry = today.expiry_far_date || today.expiry_near_date;
+                
                 // Trade: Sell Old -> Buy New
                 const rawPnL = (sellPrice - entryPrice) * CONTRACT_MULTIPLIER * currentLots;
                 const cost = config.transactionCost * currentLots;
@@ -65,20 +125,31 @@ const BacktestPanel = ({ fullData }) => {
 
                 cash += netPnL;
                 entryPrice = buyPrice;
+                
+                // Update current contract to the new one (the far contract we rolled into)
+                currentContractExpiry = newContractExpiry || null;
+                currentContractExpiryStr = newContractStr;
 
                 // Log Trade
                 trades.push({
                     date: today.date,
                     type: "Rollover",
-                    contracts: `${prev.expiry_near} → ${today.expiry_near}`,
+                    contracts: `${oldContractStr || 'Unknown'} → ${newContractStr}`,
                     sellPrice: sellPrice,
                     buyPrice: buyPrice,
                     lots: currentLots,
                     grossPnL: rawPnL,
                     cost: cost,
                     netPnL: netPnL,
-                    equity: cash
+                    equity: cash,
+                    note: rolloverReason
                 });
+            }
+            
+            // Update current contract expiry if we don't have it tracked yet
+            if (!currentContractExpiry && today.expiry_near_date) {
+                currentContractExpiry = today.expiry_near_date;
+                currentContractExpiryStr = today.expiry_near;
             }
 
             // Mark to Market Equity
@@ -130,14 +201,26 @@ const BacktestPanel = ({ fullData }) => {
             const yoy = calculateYoY(equitySeries);
             const avgAnnualRet = yoy.reduce((acc, curr) => acc + parseFloat(curr.return), 0) / yoy.length;
 
+            // Calculate max drawdown for Y-axis scaling
+            // To constrain drawdown to bottom 30% of chart: if max DD is X%, 
+            // we need domain [X/0.3, 0] so X% appears at 30% height from bottom
+            const maxDDValue = Math.max(...equitySeries.map(e => parseFloat(e.drawdown)));
+            // Calculate domain max: if max DD is 10%, domain should be [10/0.3, 0] = [33.33, 0]
+            // This makes 10% appear at 30% of chart height (10/33.33 = 0.3)
+            // Ensure minimum of 30% to always have some visible range
+            // Example: if maxDD = 90%, then axisMax = 90/0.3 = 300, so domain [300, 0]
+            // This means 90% drawdown will appear at 90/300 = 30% of chart height from bottom
+            const drawdownAxisMax = maxDDValue > 0 ? Math.max(30, Math.ceil(maxDDValue / 0.3)) : 30;
+            
             setStats({
                 initialCapital,
                 finalCapital: finalEq,
                 totalReturn: totalRet,
                 cagr,
                 avgAnnualRet,
-                maxDD: Math.max(...equitySeries.map(e => parseFloat(e.drawdown))),
-                maxLots: Math.max(...equitySeries.map(e => e.lots))
+                maxDD: maxDDValue,
+                maxLots: Math.max(...equitySeries.map(e => e.lots)),
+                drawdownAxisMax: drawdownAxisMax
             });
             setEquityCurve(equitySeries);
             setDrawdownCurve(drawdownSeries);
@@ -304,29 +387,121 @@ const BacktestPanel = ({ fullData }) => {
                         {/* Main Charts */}
                         <div className="lg:col-span-2 bg-white p-3 md:p-6 rounded-xl border border-gray-200 shadow-sm min-h-[420px]">
                             <div className="flex justify-between items-center mb-6 px-1">
-                                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Equity Growth</h3>
-                                <div className="text-xs font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
-                                    Current Lots: {equityCurve[equityCurve.length - 1]?.lots}
+                                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Equity Growth & Drawdown</h3>
+                                <div className="flex items-center gap-4">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-3 h-3 rounded-sm bg-gradient-to-br from-indigo-500 to-indigo-600 shadow-sm"></div>
+                                        <span className="text-xs font-medium text-gray-700">Equity</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-3 h-3 rounded-sm bg-gradient-to-br from-red-400 to-red-500 shadow-sm"></div>
+                                        <span className="text-xs font-medium text-gray-700">Drawdown</span>
+                                    </div>
+                                    <div className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-100">
+                                        Lots: {equityCurve[equityCurve.length - 1]?.lots}
+                                    </div>
                                 </div>
                             </div>
                             <ResponsiveContainer width="100%" height={340}>
-                                <AreaChart data={equityCurve} margin={{ top: 5, right: 0, left: 0, bottom: 0 }}>
+                                <ComposedChart data={equityCurve} margin={{ top: 10, right: 25, left: 10, bottom: 10 }}>
                                     <defs>
                                         <linearGradient id="eqGradient" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="5%" stopColor="#4f46e5" stopOpacity={0.1} />
-                                            <stop offset="95%" stopColor="#4f46e5" stopOpacity={0} />
+                                            <stop offset="0%" stopColor="#6366f1" stopOpacity={0.3} />
+                                            <stop offset="50%" stopColor="#4f46e5" stopOpacity={0.15} />
+                                            <stop offset="100%" stopColor="#4f46e5" stopOpacity={0} />
+                                        </linearGradient>
+                                        <linearGradient id="ddGradient" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stopColor="#f87171" stopOpacity={0.4} />
+                                            <stop offset="50%" stopColor="#ef4444" stopOpacity={0.25} />
+                                            <stop offset="100%" stopColor="#ef4444" stopOpacity={0.1} />
                                         </linearGradient>
                                     </defs>
-                                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
-                                    <XAxis dataKey="date" tickFormatter={d => d.split('-')[0]} minTickGap={40} tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} dy={10} />
-                                    <YAxis tickFormatter={v => `${(v / 100000).toFixed(0)}L`} tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} dx={-10} />
-                                    <RechartsTooltip
-                                        contentStyle={{ backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #e5e7eb', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                                        formatter={v => `₹${Math.round(v).toLocaleString()}`}
-                                        labelStyle={{ color: '#6b7280', marginBottom: '4px', fontSize: '12px' }}
+                                    <CartesianGrid 
+                                        strokeDasharray="3 3" 
+                                        vertical={false} 
+                                        stroke="#e5e7eb" 
+                                        strokeOpacity={0.5}
                                     />
-                                    <Area type="monotone" dataKey="equity" stroke="#4f46e5" fill="url(#eqGradient)" strokeWidth={2} />
-                                </AreaChart>
+                                    <XAxis 
+                                        dataKey="date" 
+                                        tickFormatter={d => d.split('-')[0]} 
+                                        minTickGap={40} 
+                                        tick={{ fontSize: 10, fill: '#6b7280', fontWeight: 500 }} 
+                                        axisLine={{ stroke: '#e5e7eb', strokeWidth: 1 }}
+                                        tickLine={false}
+                                        dy={8}
+                                        height={30}
+                                    />
+                                    <YAxis 
+                                        yAxisId="equity"
+                                        tickFormatter={v => `${(v / 100000).toFixed(0)}L`} 
+                                        tick={{ fontSize: 10, fill: '#6366f1', fontWeight: 600 }} 
+                                        axisLine={false} 
+                                        tickLine={false} 
+                                        dx={-8}
+                                        orientation="left"
+                                        width={60}
+                                    />
+                                    <YAxis 
+                                        yAxisId="drawdown"
+                                        orientation="right"
+                                        domain={stats?.drawdownAxisMax ? [stats.drawdownAxisMax, 0] : [30, 0]}
+                                        tickFormatter={v => `${Math.round(v)}%`} 
+                                        tick={{ fontSize: 10, fill: '#ef4444', fontWeight: 600 }} 
+                                        axisLine={false} 
+                                        tickLine={false} 
+                                        dx={8}
+                                        width={50}
+                                        allowDataOverflow={true}
+                                        type="number"
+                                    />
+                                    <RechartsTooltip
+                                        contentStyle={{ 
+                                            backgroundColor: '#fff', 
+                                            borderRadius: '10px', 
+                                            border: '1px solid #e5e7eb', 
+                                            boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05)',
+                                            padding: '12px'
+                                        }}
+                                        labelStyle={{ 
+                                            color: '#1f2937', 
+                                            marginBottom: '8px', 
+                                            fontSize: '12px',
+                                            fontWeight: 600
+                                        }}
+                                        formatter={(value, name) => {
+                                            if (name === 'equity') {
+                                                return [`₹${Math.round(value).toLocaleString('en-IN')}`, 'Equity'];
+                                            } else if (name === 'drawdown') {
+                                                return [`${parseFloat(value).toFixed(2)}%`, 'Drawdown'];
+                                            }
+                                            return [value, name];
+                                        }}
+                                        separator=": "
+                                        itemStyle={{ fontSize: '12px', padding: '4px 0' }}
+                                    />
+                                    <Area 
+                                        yAxisId="equity"
+                                        type="monotone" 
+                                        dataKey="equity" 
+                                        stroke="#6366f1" 
+                                        fill="url(#eqGradient)" 
+                                        strokeWidth={2.5}
+                                        name="equity"
+                                        activeDot={{ r: 5, fill: '#6366f1', stroke: '#fff', strokeWidth: 2 }}
+                                    />
+                                    <Area 
+                                        yAxisId="drawdown"
+                                        type="monotone" 
+                                        dataKey="drawdown" 
+                                        stroke="#ef4444" 
+                                        fill="url(#ddGradient)" 
+                                        strokeWidth={2}
+                                        name="drawdown"
+                                        dot={false}
+                                        activeDot={{ r: 4, fill: '#ef4444', stroke: '#fff', strokeWidth: 2 }}
+                                    />
+                                </ComposedChart>
                             </ResponsiveContainer>
                         </div>
 
