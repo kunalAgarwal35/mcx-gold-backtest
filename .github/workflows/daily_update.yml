@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -28,26 +30,30 @@ jobs:
           pip install -r requirements.txt
 
       - name: Fetch latest data
+        timeout-minutes: 30
         run: |
-          python fetch_gold_history.py
+          python update_latest_data.py || echo "Warning: Some data updates may have failed, continuing..."
 
       - name: Process analysis data
+        timeout-minutes: 10
         run: |
           python process_analysis.py
 
       - name: Commit and push changes
+        timeout-minutes: 5
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
           # Add potentially new/modified files
-          git add gold_daily_ohlc/
-          git add gold_analysis_dashboard/public/data.json
+          git add gold_daily_ohlc/ || echo "No OHLC files to add"
+          git add gold_analysis_dashboard/public/data.json || echo "No data.json to add"
           
           # Commit if there are changes
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "auto: update gold data [skip ci]"
-            git push
+            git commit -m "auto: update gold data [skip ci]" || exit 1
+            git push || exit 1
+            echo "Successfully pushed changes"
           fi
