@@ -182,6 +182,22 @@ Date ranges must be in **`DD/MM/YYYY`** format (e.g., `06/09/2025`)
 
 Leave `from_date` and `to_date` empty to fetch all available data for the expiry.
 
+## 📈 Updating data for the web dashboard
+
+The dashboard at `gold_analysis_dashboard/` reads **`gold_analysis_dashboard/public/data.json`**, not the CSV files directly. After updating OHLC data you must regenerate this file:
+
+1. **Update OHLC CSVs** (writes to `gold_daily_ohlc/*.csv`):
+   ```bash
+   python update_latest_data.py
+   ```
+2. **Regenerate dashboard data** (reads CSVs, writes `gold_analysis_dashboard/public/data.json`):
+   ```bash
+   python process_analysis.py
+   ```
+3. Commit and push **both** `gold_daily_ohlc/` and `gold_analysis_dashboard/public/data.json` so the web app shows the new data.
+
+The GitHub Actions workflow (daily or manual) runs both steps; when updating locally, run both before pushing.
+
 ## 🔍 Testing
 
 Run the example script:
