@@ -16858,5 +16858,1835 @@
     "expiry_far": "05Jun2026",
     "expiry_near_date": "2026-04-02",
     "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-12",
+    "premium": 16.07,
+    "price_near": 160271.0,
+    "price_far": 164787.0,
+    "expiry_near": "02Apr2026",
+    "expiry_far": "05Jun2026",
+    "expiry_near_date": "2026-04-02",
+    "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-13",
+    "premium": 17.78,
+    "price_near": 158466.0,
+    "price_far": 163406.0,
+    "expiry_near": "02Apr2026",
+    "expiry_far": "05Jun2026",
+    "expiry_near_date": "2026-04-02",
+    "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-16",
+    "premium": 17.42,
+    "price_near": 155736.0,
+    "price_far": 160493.0,
+    "expiry_near": "02Apr2026",
+    "expiry_far": "05Jun2026",
+    "expiry_near_date": "2026-04-02",
+    "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-17",
+    "premium": 17.53,
+    "price_near": 155985.0,
+    "price_far": 160779.0,
+    "expiry_near": "02Apr2026",
+    "expiry_far": "05Jun2026",
+    "expiry_near_date": "2026-04-02",
+    "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-18",
+    "premium": 16.44,
+    "price_near": 153025.0,
+    "price_far": 157437.0,
+    "expiry_near": "02Apr2026",
+    "expiry_far": "05Jun2026",
+    "expiry_near_date": "2026-04-02",
+    "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-19",
+    "premium": 12.99,
+    "price_near": 144954.0,
+    "price_far": 148256.0,
+    "expiry_near": "02Apr2026",
+    "expiry_far": "05Jun2026",
+    "expiry_near_date": "2026-04-02",
+    "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-20",
+    "premium": 13.79,
+    "price_near": 144492.0,
+    "price_far": 147987.0,
+    "expiry_near": "02Apr2026",
+    "expiry_far": "05Jun2026",
+    "expiry_near_date": "2026-04-02",
+    "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-23",
+    "premium": 12.24,
+    "price_near": 139260.0,
+    "price_far": 142248.0,
+    "expiry_near": "02Apr2026",
+    "expiry_far": "05Jun2026",
+    "expiry_near_date": "2026-04-02",
+    "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-24",
+    "premium": 13.48,
+    "price_near": 138912.0,
+    "price_far": 142195.0,
+    "expiry_near": "02Apr2026",
+    "expiry_far": "05Jun2026",
+    "expiry_near_date": "2026-04-02",
+    "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-25",
+    "premium": 13.23,
+    "price_near": 144097.0,
+    "price_far": 147440.0,
+    "expiry_near": "02Apr2026",
+    "expiry_far": "05Jun2026",
+    "expiry_near_date": "2026-04-02",
+    "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-26",
+    "premium": 12.35,
+    "price_near": 139493.0,
+    "price_far": 142514.0,
+    "expiry_near": "02Apr2026",
+    "expiry_far": "05Jun2026",
+    "expiry_near_date": "2026-04-02",
+    "expiry_far_date": "2026-06-05"
+  },
+  {
+    "date": "2026-03-27",
+    "premium": 11.69,
+    "price_near": 147255.0,
+    "price_far": 150132.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-03-30",
+    "premium": 11.32,
+    "price_near": 147666.0,
+    "price_far": 150459.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-03-31",
+    "premium": 7.3,
+    "price_near": 150761.0,
+    "price_far": 152601.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-01",
+    "premium": 9.44,
+    "price_near": 153708.0,
+    "price_far": 156133.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-02",
+    "premium": 9.11,
+    "price_near": 149680.0,
+    "price_far": 151960.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-06",
+    "premium": 10.57,
+    "price_near": 149981.0,
+    "price_far": 152630.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-07",
+    "premium": 9.12,
+    "price_near": 150289.0,
+    "price_far": 152579.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-08",
+    "premium": 10.1,
+    "price_near": 151776.0,
+    "price_far": 154337.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-09",
+    "premium": 10.01,
+    "price_near": 153434.0,
+    "price_far": 156002.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-10",
+    "premium": 9.97,
+    "price_near": 152652.0,
+    "price_far": 155196.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-13",
+    "premium": 10.03,
+    "price_near": 152072.0,
+    "price_far": 154621.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-14",
+    "premium": 9.55,
+    "price_near": 154817.0,
+    "price_far": 157287.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-15",
+    "premium": 9.53,
+    "price_near": 153948.0,
+    "price_far": 156399.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-16",
+    "premium": 10.3,
+    "price_near": 153152.0,
+    "price_far": 155788.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-17",
+    "premium": 9.95,
+    "price_near": 154609.0,
+    "price_far": 157179.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-20",
+    "premium": 9.87,
+    "price_near": 153943.0,
+    "price_far": 156482.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-21",
+    "premium": 11.04,
+    "price_near": 151671.0,
+    "price_far": 154470.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-22",
+    "premium": 10.41,
+    "price_near": 152657.0,
+    "price_far": 155312.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-23",
+    "premium": 9.89,
+    "price_near": 151761.0,
+    "price_far": 154269.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-24",
+    "premium": 9.89,
+    "price_near": 152699.0,
+    "price_far": 155222.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-27",
+    "premium": 11.08,
+    "price_near": 151721.0,
+    "price_far": 154531.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-28",
+    "premium": 12.09,
+    "price_near": 150027.0,
+    "price_far": 153059.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-29",
+    "premium": 12.06,
+    "price_near": 149050.0,
+    "price_far": 152054.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-04-30",
+    "premium": 12.52,
+    "price_near": 151111.0,
+    "price_far": 154272.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-01",
+    "premium": 12.47,
+    "price_near": 151352.0,
+    "price_far": 154505.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-04",
+    "premium": 14.05,
+    "price_near": 149339.0,
+    "price_far": 152846.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-05",
+    "premium": 14.16,
+    "price_near": 149753.0,
+    "price_far": 153298.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-06",
+    "premium": 13.63,
+    "price_near": 152132.0,
+    "price_far": 155598.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-07",
+    "premium": 13.39,
+    "price_near": 152261.0,
+    "price_far": 155668.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-08",
+    "premium": 13.55,
+    "price_near": 152530.0,
+    "price_far": 155984.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-11",
+    "premium": 13.64,
+    "price_near": 153663.0,
+    "price_far": 157165.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-12",
+    "premium": 14.54,
+    "price_near": 153442.0,
+    "price_far": 157171.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-13",
+    "premium": 15.64,
+    "price_near": 162186.0,
+    "price_far": 166426.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-14",
+    "premium": 16.32,
+    "price_near": 161978.0,
+    "price_far": 166397.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-15",
+    "premium": 17.36,
+    "price_near": 158547.0,
+    "price_far": 163147.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-18",
+    "premium": 13.53,
+    "price_near": 159401.0,
+    "price_far": 163005.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-19",
+    "premium": 9.23,
+    "price_near": 159080.0,
+    "price_far": 161533.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-20",
+    "premium": 9.81,
+    "price_near": 160006.0,
+    "price_far": 162630.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-21",
+    "premium": 10.25,
+    "price_near": 159606.0,
+    "price_far": 162340.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-22",
+    "premium": 9.96,
+    "price_near": 158679.0,
+    "price_far": 161320.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-25",
+    "premium": 12.41,
+    "price_near": 159081.0,
+    "price_far": 162381.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-26",
+    "premium": 12.32,
+    "price_near": 157616.0,
+    "price_far": 160861.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-27",
+    "premium": 15.21,
+    "price_near": 155627.0,
+    "price_far": 159583.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-28",
+    "premium": 15.17,
+    "price_near": 156925.0,
+    "price_far": 160903.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-05-29",
+    "premium": 20.52,
+    "price_near": 155575.0,
+    "price_far": 160911.0,
+    "expiry_near": "05Jun2026",
+    "expiry_far": "05Aug2026",
+    "expiry_near_date": "2026-06-05",
+    "expiry_far_date": "2026-08-05"
+  },
+  {
+    "date": "2026-06-01",
+    "premium": 14.19,
+    "price_near": 159241.0,
+    "price_far": 163017.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-02",
+    "premium": 14.56,
+    "price_near": 159346.0,
+    "price_far": 163223.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-03",
+    "premium": 13.53,
+    "price_near": 158519.0,
+    "price_far": 162103.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-04",
+    "premium": 12.71,
+    "price_near": 159547.0,
+    "price_far": 162935.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-05",
+    "premium": 12.98,
+    "price_near": 155594.0,
+    "price_far": 158970.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-08",
+    "premium": 12.31,
+    "price_near": 154784.0,
+    "price_far": 157969.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-09",
+    "premium": 13.29,
+    "price_near": 152443.0,
+    "price_far": 155828.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-10",
+    "premium": 13.44,
+    "price_near": 148017.0,
+    "price_far": 151342.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-11",
+    "premium": 12.95,
+    "price_near": 148932.0,
+    "price_far": 152155.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-12",
+    "premium": 13.54,
+    "price_near": 150528.0,
+    "price_far": 153934.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-15",
+    "premium": 14.47,
+    "price_near": 152916.0,
+    "price_far": 156615.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-16",
+    "premium": 14.11,
+    "price_near": 153091.0,
+    "price_far": 156702.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-17",
+    "premium": 14.31,
+    "price_near": 153879.0,
+    "price_far": 157560.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-18",
+    "premium": 13.85,
+    "price_near": 149309.0,
+    "price_far": 152765.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-19",
+    "premium": 15.14,
+    "price_near": 147203.0,
+    "price_far": 150928.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-22",
+    "premium": 13.95,
+    "price_near": 148118.0,
+    "price_far": 151571.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-23",
+    "premium": 14.81,
+    "price_near": 146529.0,
+    "price_far": 150156.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-24",
+    "premium": 14.02,
+    "price_near": 141270.0,
+    "price_far": 144581.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-25",
+    "premium": 13.39,
+    "price_near": 143127.0,
+    "price_far": 146331.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-26",
+    "premium": 14.85,
+    "price_near": 144162.0,
+    "price_far": 147740.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-29",
+    "premium": 13.97,
+    "price_near": 142402.0,
+    "price_far": 145727.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-06-30",
+    "premium": 14.05,
+    "price_near": 142531.0,
+    "price_far": 145877.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-01",
+    "premium": 14.61,
+    "price_near": 144430.0,
+    "price_far": 147956.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-02",
+    "premium": 14.72,
+    "price_near": 145758.0,
+    "price_far": 149343.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-03",
+    "premium": 13.08,
+    "price_near": 147378.0,
+    "price_far": 150599.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-06",
+    "premium": 13.01,
+    "price_near": 146917.0,
+    "price_far": 150111.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-07",
+    "premium": 12.8,
+    "price_near": 145392.0,
+    "price_far": 148501.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-08",
+    "premium": 13.4,
+    "price_near": 143711.0,
+    "price_far": 146930.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-09",
+    "premium": 13.21,
+    "price_near": 145300.0,
+    "price_far": 148509.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-10",
+    "premium": 10.91,
+    "price_near": 143478.0,
+    "price_far": 146094.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-13",
+    "premium": 10.34,
+    "price_near": 140309.0,
+    "price_far": 142733.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-14",
+    "premium": 9.19,
+    "price_near": 142257.0,
+    "price_far": 144441.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-15",
+    "premium": 7.26,
+    "price_near": 141850.0,
+    "price_far": 143570.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-16",
+    "premium": 3.61,
+    "price_near": 140348.0,
+    "price_far": 141194.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-17",
+    "premium": 3.04,
+    "price_near": 140906.0,
+    "price_far": 141623.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-20",
+    "premium": 4.28,
+    "price_near": 141388.0,
+    "price_far": 142400.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-21",
+    "premium": 5.32,
+    "price_near": 142883.0,
+    "price_far": 144153.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-22",
+    "premium": 5.62,
+    "price_near": 145680.0,
+    "price_far": 147048.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-23",
+    "premium": 4.73,
+    "price_near": 142821.0,
+    "price_far": 143949.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-24",
+    "premium": 4.81,
+    "price_near": 143106.0,
+    "price_far": 144257.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-27",
+    "premium": 4.7,
+    "price_near": 143063.0,
+    "price_far": 144186.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-28",
+    "premium": 5.47,
+    "price_near": 141623.0,
+    "price_far": 142918.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-29",
+    "premium": 6.34,
+    "price_near": 141781.0,
+    "price_far": 143283.0,
+    "expiry_near": "05Aug2026",
+    "expiry_far": "05Oct2026",
+    "expiry_near_date": "2026-08-05",
+    "expiry_far_date": "2026-10-05"
+  },
+  {
+    "date": "2026-07-30",
+    "premium": 4.75,
+    "price_near": 144840.0,
+    "price_far": 145971.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-07-31",
+    "premium": 4.34,
+    "price_near": 143376.0,
+    "price_far": 144400.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-03",
+    "premium": 4.65,
+    "price_near": 142915.0,
+    "price_far": 144007.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-04",
+    "premium": 4.31,
+    "price_near": 144299.0,
+    "price_far": 145322.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-05",
+    "premium": 5.28,
+    "price_near": 148493.0,
+    "price_far": 149781.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-06",
+    "premium": 4.46,
+    "price_near": 148858.0,
+    "price_far": 149949.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-07",
+    "premium": 5.48,
+    "price_near": 151820.0,
+    "price_far": 153187.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-10",
+    "premium": 5.55,
+    "price_near": 153099.0,
+    "price_far": 154495.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-11",
+    "premium": 6.41,
+    "price_near": 153765.0,
+    "price_far": 155385.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-12",
+    "premium": 6.62,
+    "price_near": 154882.0,
+    "price_far": 156568.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-13",
+    "premium": 6.88,
+    "price_near": 153466.0,
+    "price_far": 155201.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-14",
+    "premium": 7.26,
+    "price_near": 154506.0,
+    "price_far": 156351.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-17",
+    "premium": 6.72,
+    "price_near": 155940.0,
+    "price_far": 157662.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-18",
+    "premium": 7.12,
+    "price_near": 154262.0,
+    "price_far": 156067.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-19",
+    "premium": 6.43,
+    "price_near": 157996.0,
+    "price_far": 159666.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-20",
+    "premium": 6.95,
+    "price_near": 159425.0,
+    "price_far": 161246.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-21",
+    "premium": 6.82,
+    "price_near": 162438.0,
+    "price_far": 164259.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-24",
+    "premium": 8.68,
+    "price_near": 163229.0,
+    "price_far": 165559.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-25",
+    "premium": 7.11,
+    "price_near": 162882.0,
+    "price_far": 164786.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-26",
+    "premium": 6.29,
+    "price_near": 159663.0,
+    "price_far": 161314.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-27",
+    "premium": 5.34,
+    "price_near": 158996.0,
+    "price_far": 160392.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-28",
+    "premium": 6.43,
+    "price_near": 156281.0,
+    "price_far": 157932.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-08-31",
+    "premium": 4.03,
+    "price_near": 154460.0,
+    "price_far": 155484.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-01",
+    "premium": 6.27,
+    "price_near": 151729.0,
+    "price_far": 153293.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-02",
+    "premium": 6.93,
+    "price_near": 152402.0,
+    "price_far": 154139.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-03",
+    "premium": 6.64,
+    "price_near": 155775.0,
+    "price_far": 157475.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-04",
+    "premium": 5.52,
+    "price_near": 152767.0,
+    "price_far": 154154.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-07",
+    "premium": 5.37,
+    "price_near": 152818.0,
+    "price_far": 154166.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-08",
+    "premium": 6.4,
+    "price_near": 152579.0,
+    "price_far": 154184.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-09",
+    "premium": 5.38,
+    "price_near": 153763.0,
+    "price_far": 155123.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-10",
+    "premium": 6.14,
+    "price_near": 152341.0,
+    "price_far": 153879.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-11",
+    "premium": 5.18,
+    "price_near": 152784.0,
+    "price_far": 154086.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-14",
+    "premium": 5.46,
+    "price_near": 151230.0,
+    "price_far": 152588.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-15",
+    "premium": 5.33,
+    "price_near": 150809.0,
+    "price_far": 152130.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-16",
+    "premium": 6.15,
+    "price_near": 152470.0,
+    "price_far": 154011.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-17",
+    "premium": 5.2,
+    "price_near": 152981.0,
+    "price_far": 154288.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-18",
+    "premium": 6.15,
+    "price_near": 154381.0,
+    "price_far": 155942.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-21",
+    "premium": 7.2,
+    "price_near": 153094.0,
+    "price_far": 154906.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-22",
+    "premium": 8.02,
+    "price_near": 152716.0,
+    "price_far": 154729.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-23",
+    "premium": 8.75,
+    "price_near": 151299.0,
+    "price_far": 153476.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-24",
+    "premium": 8.75,
+    "price_near": 150710.0,
+    "price_far": 152878.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-25",
+    "premium": 9.66,
+    "price_near": 150881.0,
+    "price_far": 153277.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-28",
+    "premium": 8.67,
+    "price_near": 146804.0,
+    "price_far": 148897.0,
+    "expiry_near": "05Oct2026",
+    "expiry_far": "04Dec2026",
+    "expiry_near_date": "2026-10-05",
+    "expiry_far_date": "2026-12-04"
+  },
+  {
+    "date": "2026-09-29",
+    "premium": 9.02,
+    "price_near": 148823.0,
+    "price_far": 151140.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-09-30",
+    "premium": 9.08,
+    "price_near": 149036.0,
+    "price_far": 151372.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-01",
+    "premium": 9.33,
+    "price_near": 150390.0,
+    "price_far": 152812.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-05",
+    "premium": 9.32,
+    "price_near": 149316.0,
+    "price_far": 151719.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-06",
+    "premium": 8.84,
+    "price_near": 150120.0,
+    "price_far": 152411.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-07",
+    "premium": 8.05,
+    "price_near": 149103.0,
+    "price_far": 151175.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-08",
+    "premium": 8.34,
+    "price_near": 149610.0,
+    "price_far": 151763.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-09",
+    "premium": 8.07,
+    "price_near": 151499.0,
+    "price_far": 153608.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-12",
+    "premium": 8.64,
+    "price_near": 149543.0,
+    "price_far": 151772.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-13",
+    "premium": 9.51,
+    "price_near": 148450.0,
+    "price_far": 150888.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-14",
+    "premium": 9.53,
+    "price_near": 145848.0,
+    "price_far": 148248.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-15",
+    "premium": 8.96,
+    "price_near": 147489.0,
+    "price_far": 149771.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-16",
+    "premium": 9.58,
+    "price_near": 147918.0,
+    "price_far": 150364.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-19",
+    "premium": 9.78,
+    "price_near": 147266.0,
+    "price_far": 149752.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-20",
+    "premium": 9.93,
+    "price_near": 146519.0,
+    "price_far": 149029.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-21",
+    "premium": 9.95,
+    "price_near": 146079.0,
+    "price_far": 148589.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-22",
+    "premium": 10.62,
+    "price_near": 143309.0,
+    "price_far": 145935.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-23",
+    "premium": 10.51,
+    "price_near": 142024.0,
+    "price_far": 144601.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-26",
+    "premium": 10.46,
+    "price_near": 143073.0,
+    "price_far": 145655.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-27",
+    "premium": 10.06,
+    "price_near": 144138.0,
+    "price_far": 146641.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-28",
+    "premium": 10.21,
+    "price_near": 143705.0,
+    "price_far": 146237.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-29",
+    "premium": 10.65,
+    "price_near": 142596.0,
+    "price_far": 145218.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-10-30",
+    "premium": 11.03,
+    "price_near": 138485.0,
+    "price_far": 141121.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-02",
+    "premium": 11.32,
+    "price_near": 140186.0,
+    "price_far": 142926.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-03",
+    "premium": 10.76,
+    "price_near": 139452.0,
+    "price_far": 142043.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-04",
+    "premium": 11.37,
+    "price_near": 143234.0,
+    "price_far": 146045.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-05",
+    "premium": 11.95,
+    "price_near": 144095.0,
+    "price_far": 147066.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-06",
+    "premium": 12.57,
+    "price_near": 142167.0,
+    "price_far": 145252.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-08",
+    "premium": 12.27,
+    "price_near": 142552.0,
+    "price_far": 145571.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-09",
+    "premium": 13.14,
+    "price_near": 143166.0,
+    "price_far": 146413.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-10",
+    "premium": 13.09,
+    "price_near": 140525.0,
+    "price_far": 143700.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-11",
+    "premium": 12.4,
+    "price_near": 139716.0,
+    "price_far": 142707.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-12",
+    "premium": 12.94,
+    "price_near": 136225.0,
+    "price_far": 139268.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-13",
+    "premium": 12.93,
+    "price_near": 136705.0,
+    "price_far": 139755.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-16",
+    "premium": 13.01,
+    "price_near": 134539.0,
+    "price_far": 137561.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-17",
+    "premium": 13.22,
+    "price_near": 134223.0,
+    "price_far": 137286.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-18",
+    "premium": 11.96,
+    "price_near": 129814.0,
+    "price_far": 132493.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-19",
+    "premium": 12.03,
+    "price_near": 127452.0,
+    "price_far": 130099.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-20",
+    "premium": 11.49,
+    "price_near": 121778.0,
+    "price_far": 124193.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-23",
+    "premium": 12.82,
+    "price_near": 125996.0,
+    "price_far": 128783.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
+  },
+  {
+    "date": "2026-11-24",
+    "premium": 12.98,
+    "price_near": 122329.0,
+    "price_far": 125070.0,
+    "expiry_near": "04Dec2026",
+    "expiry_far": "05Feb2027",
+    "expiry_near_date": "2026-12-04",
+    "expiry_far_date": "2027-02-05"
   }
 ]

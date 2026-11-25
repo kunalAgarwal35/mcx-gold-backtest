@@ -15,58 +15,62 @@ Automate fetching of commodity bhavcopy (OHLC price data) from MCX India website
 
 ### Endpoint Information
 
-**URL:** `https://www.mcxindia.com/backpage.aspx/GetCommoditywiseBhavCopy`
+> **Changed in 2026.** The old `POST https://www.mcxindia.com/backpage.aspx/GetCommoditywiseBhavCopy`
+> now returns 404, and Akamai answers 403 to plain `requests` on every MCX URL. The fetcher uses the
+> endpoint below through `curl_cffi` with Chrome impersonation (`pip install -r requirements.txt`).
 
-**Method:** `POST`
+**URL:** `https://www.mcxindia.com/market-data/bhavcopy/GetCommoditywiseBhavCopy`
+
+**Method:** `GET`
 
 **Headers:**
 ```
 Accept: application/json, text/javascript, */*; q=0.01
 Content-Type: application/json
 X-Requested-With: XMLHttpRequest
+Referer: https://www.mcxindia.com/market-data/bhavcopy
 ```
 
-**Request Payload:**
-```json
-{
-  "Symbol": "GOLD",
-  "Expiry": "05DEC2025",
-  "FromDate": "06/09/2025",
-  "ToDate": "06/12/2025",
-  "InstrumentName": "FUTCOM"
-}
+**Query parameters** (dates are **DD/MM/YYYY**):
+```
+InstrumentName=FUTCOM&Symbol=GOLD&Expiry=04DEC2026&fromDate=18/11/2026&toDate=25/11/2026
 ```
 
-**Response Structure:**
+**Response Structure** (newest row first; `Date` comes back as **MM/DD/YYYY**, `Value` is in Rs lakh):
 ```json
 {
-  "d": {
-    "Data": [
-      {
-        "Date": "/Date(1733356200000)/",
-        "DateDisplay": "05/12/2025",
-        "Open": "77950.00",
-        "High": "78120.00",
-        "Low": "77715.00",
-        "Close": "77890.00",
-        "PreviousClose": "77805.00",
-        "Volume": "1543",
-        "Value": "1684.65 Crore",
-        "OpenInterest": "12345",
-        "Symbol": "GOLD",
-        "ExpiryDate": "05DEC2025",
-        "InstrumentName": "FUTCOM",
-        "StrikePrice": "",
-        "OptionType": ""
-      }
-    ],
-    "Summary": {
-      "Count": 5,
-      "AsOn": "/Date(1733356200000)/"
+  "IsSuccess": true,
+  "Message": "Request was successful",
+  "Data": [
+    {
+      "sLTT": null,
+      "Date": "11/24/2026",
+      "Symbol": "GOLD         ",
+      "ExpiryDate": "04DEC2026",
+      "Open": 124441.00,
+      "High": 125549.00,
+      "Low": 122165.00,
+      "Close": 122329.00,
+      "PreviousClose": 125996.00,
+      "Volume": 6063,
+      "VolumeInThousands": "6063.000 GRMS ",
+      "Value": 751106.79,
+      "OpenInterest": 9176,
+      "DateDisplay": "24 Nov 2026",
+      "InstrumentName": "FUTCOM",
+      "StrikePrice": 0.00,
+      "OptionType": "-"
     }
-  }
+  ]
 }
 ```
+
+The CSVs in `gold_daily_ohlc/` keep their original columns (`__type,Date,...,OptionType`, ISO dates):
+`gold-research/goldlab/raw.py` reads this folder and checks that header.
+
+GOLD futures expiries (FUTCOM) are listed in the page source of `https://www.mcxindia.com/market-data/bhavcopy`
+(JSON objects with `"SymbolValue":"GOLD","InstrumentName":"FUTCOM"`); add new ones to
+`get_validated_expiries()` in `fetch_gold_history.py`.
 
 ## 🚀 Installation
 

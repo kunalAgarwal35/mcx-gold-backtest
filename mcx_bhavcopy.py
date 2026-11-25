@@ -4,13 +4,21 @@ MCX India Bhavcopy Data Fetcher
 This script fetches commodity-wise bhavcopy (price) data from MCX India website
 using their internal API endpoint.
 
-API Details:
-- Endpoint: https://www.mcxindia.com/backpage.aspx/GetCommoditywiseBhavCopy
-- Method: POST
-- Content-Type: application/json
+API Details (MCX moved the endpoint in 2026; the old POST to
+backpage.aspx/GetCommoditywiseBhavCopy now returns 404):
+- Endpoint: https://www.mcxindia.com/market-data/bhavcopy/GetCommoditywiseBhavCopy
+- Method: GET, query params InstrumentName, Symbol, Expiry, fromDate, toDate
+- Dates: DD/MM/YYYY in the request, MM/DD/YYYY in the response
+- Akamai rejects plain `requests` (403 on every URL), so the session uses
+  curl_cffi with Chrome TLS impersonation.
 """
 
-import requests
+try:
+    from curl_cffi import requests
+    _IMPERSONATE = {"impersonate": "chrome"}
+except ImportError:  # falls back to plain requests, which Akamai blocks with 403
+    import requests
+    _IMPERSONATE = {}
 import pandas as pd
 from datetime import datetime, timedelta
 from typing import Optional, List, Dict
@@ -28,7 +36,15 @@ logger = logging.getLogger(__name__)
 class MCXBhavcopyFetcher:
     """Fetches bhavcopy data from MCX India"""
     
-    BASE_URL = "https://www.mcxindia.com/backpage.aspx/GetCommoditywiseBhavCopy"
+    BASE_URL = "https://www.mcxindia.com/market-data/bhavcopy/GetCommoditywiseBhavCopy"
+
+    # Column order of the CSVs in gold_daily_ohlc/. gold-research's goldlab/raw.py checks this
+    # header and reads the date from the second field, so it must not change.
+    CSV_COLUMNS = [
+        '__type', 'Date', 'Symbol', 'ExpiryDate', 'Open', 'High', 'Low', 'Close',
+        'PreviousClose', 'Volume', 'VolumeInThousands', 'Value', 'OpenInterest',
+        'DateDisplay', 'InstrumentName', 'StrikePrice', 'OptionType',
+    ]
     
     # Common commodities and their symbols
     COMMODITIES = {
@@ -45,39 +61,19 @@ class MCXBhavcopyFetcher:
     
     def __init__(self):
         """Initialize the fetcher with required headers"""
-        self.session = requests.Session()
+        if not _IMPERSONATE:
+            logger.warning("curl_cffi is not installed; MCX (Akamai) will likely answer 403. "
+                           "pip install -r requirements.txt")
+        self.session = requests.Session(**_IMPERSONATE)
+        # User-Agent and TLS fingerprint come from the impersonated browser; only the
+        # XHR headers the bhavcopy page itself sends are set here.
         self.headers = {
             'Accept': 'application/json, text/javascript, */*; q=0.01',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Accept-Language': 'en-US,en;q=0.9',
-            'Content-Type': 'application/json; charset=UTF-8',
-            'Origin': 'https://www.mcxindia.com',
+            'Content-Type': 'application/json',
             'Referer': 'https://www.mcxindia.com/market-data/bhavcopy',
-            'Sec-Fetch-Dest': 'empty',
-            'Sec-Fetch-Mode': 'cors',
-            'Sec-Fetch-Site': 'same-origin',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
             'X-Requested-With': 'XMLHttpRequest',
         }
-        # First visit the page to get cookies
-        self._initialize_session()
-    
-    def _initialize_session(self):
-        """Visit the main page to establish a session and get cookies"""
-        try:
-            # Visit the bhavcopy page to get cookies
-            self.session.get(
-                'https://www.mcxindia.com/market-data/bhavcopy',
-                headers={
-                    'User-Agent': self.headers['User-Agent'],
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
-                },
-                timeout=10
-            )
-            logger.info("Session initialized successfully")
-        except Exception as e:
-            logger.warning(f"Could not initialize session: {e}")
-    
+
     def fetch_data(
         self,
         symbol: str,
@@ -99,31 +95,33 @@ class MCXBhavcopyFetcher:
         Returns:
             Dictionary containing the API response
         """
-        payload = {
+        params = {
+            "InstrumentName": instrument_name,
             "Symbol": symbol,
             "Expiry": expiry,
-            "FromDate": from_date or "",
-            "ToDate": to_date or "",
-            "InstrumentName": instrument_name
+            "fromDate": from_date or "",
+            "toDate": to_date or "",
         }
-        
+
         logger.info(f"Fetching data for {symbol} - Expiry: {expiry}")
-        logger.debug(f"Payload: {json.dumps(payload, indent=2)}")
-        
+        logger.debug(f"Params: {json.dumps(params, indent=2)}")
+
         try:
-            response = self.session.post(
+            response = self.session.get(
                 self.BASE_URL,
-                json=payload,
+                params=params,
                 headers=self.headers,
                 timeout=30
             )
             response.raise_for_status()
-            
+
             data = response.json()
+            if not data.get('IsSuccess', True):
+                raise ValueError(f"MCX returned IsSuccess=false: {data.get('Message')}")
             logger.info(f"Successfully fetched data for {symbol}")
             return data
-            
-        except requests.exceptions.RequestException as e:
+
+        except Exception as e:
             logger.error(f"Error fetching data: {e}")
             raise
     
@@ -184,21 +182,35 @@ class MCXBhavcopyFetcher:
             Pandas DataFrame with cleaned data
         """
         try:
-            # The response has a 'd' property containing the data
-            data_list = response_data.get('d', {}).get('Data', [])
-            
+            # New endpoint: {"IsSuccess", "Message", "Data": [...]}.
+            # Old endpoint (gone): {"d": {"Data": [...]}}.
+            data_list = response_data.get('Data')
+            if data_list is None:
+                data_list = (response_data.get('d') or {}).get('Data', [])
+
             if not data_list:
                 logger.warning("No data found in response")
                 return pd.DataFrame()
-            
+
             # Convert to DataFrame
             df = pd.DataFrame(data_list)
-            
-            # Convert date columns
+
+            # Convert date columns. The new endpoint sends Date as MM/DD/YYYY; written out
+            # as an ISO date like every existing CSV row.
             if 'Date' in df.columns:
-                df['Date'] = pd.to_datetime(df['Date'])
+                df['Date'] = pd.to_datetime(df['Date'], format='%m/%d/%Y')
             if 'DateDisplay' in df.columns:
+                # Never parsed in the old files either (always empty); kept for the column layout.
                 df['DateDisplay'] = pd.to_datetime(df['DateDisplay'], format='%d/%m/%Y', errors='coerce')
+
+            # Keep the CSV layout of the files already on disk: the old response carried a
+            # constant __type field and no sLTT field.
+            if '__type' not in df.columns:
+                df['__type'] = 'MCX.BL.Bhavcopy'
+            missing = [c for c in self.CSV_COLUMNS if c not in df.columns]
+            if missing:
+                raise ValueError(f"MCX response is missing columns: {missing}")
+            df = df[self.CSV_COLUMNS]
             
             # Convert numeric columns
             numeric_cols = ['Open', 'High', 'Low', 'Close', 'PreviousClose', 

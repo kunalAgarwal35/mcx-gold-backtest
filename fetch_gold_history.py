@@ -30,6 +30,8 @@ def get_validated_expiries() -> List[str]:
     Filtered for 2014 onwards as per requirement.
     """
     all_expiries = [
+        # 2027 (GOLD FUTCOM expiries listed on the MCX bhavcopy page, 2026-11-25)
+        "05OCT2027", "05AUG2027", "04JUN2027", "05APR2027", "05FEB2027",
         # 2026
         "04DEC2026", "27NOV2026", "30OCT2026", "05OCT2026", "25SEP2026", "31AUG2026", 
         "05AUG2026", "29JUL2026", "30JUN2026", "05JUN2026", "27MAY2026", "30APR2026", 
@@ -79,10 +81,10 @@ def get_date_range(expiry_str: str) -> tuple[str, str]:
     # Increased to 200 days to ensure Far Leg data availability for spread calculation
     start_date = expiry_date - timedelta(days=200)
     
-    # Format for API: MM/DD/YYYY (US Format required by MCX)
+    # Format for API: DD/MM/YYYY (the current MCX endpoint; the old one took MM/DD/YYYY)
     # Note: expiry_date is the "ToDate"
-    to_date_str = expiry_date.strftime("%m/%d/%Y")
-    from_date_str = start_date.strftime("%m/%d/%Y")
+    to_date_str = expiry_date.strftime("%d/%m/%Y")
+    from_date_str = start_date.strftime("%d/%m/%Y")
     
     return from_date_str, to_date_str
 
