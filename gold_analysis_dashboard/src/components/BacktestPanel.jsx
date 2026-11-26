@@ -13,6 +13,7 @@ const BacktestPanel = ({ fullData }) => {
         initialMarginPercent: 30,
         transactionCost: 1800,
         compoundingFactor: 200,
+        halvingFactor: 50,
         isCompounding: false,
         neverCompound: true
     });
@@ -134,16 +135,29 @@ const BacktestPanel = ({ fullData }) => {
                                 </div>
 
                                 {!config.neverCompound ? (
-                                    <div className="flex items-center gap-2 text-xs text-gray-600 bg-gray-50 rounded-lg p-2 border border-gray-100">
-                                        <span>Double Lots at</span>
-                                        <input
-                                            type="number"
-                                            name="compoundingFactor"
-                                            value={config.compoundingFactor}
-                                            onChange={handleChange}
-                                            className="w-12 border-b border-gray-300 focus:border-blue-500 bg-transparent text-center outline-none font-bold text-gray-900 px-0.5"
-                                        />
-                                        <span>% Profit</span>
+                                    <div className="space-y-2">
+                                        <div className="flex items-center gap-2 text-xs text-gray-600 bg-gray-50 rounded-lg p-2 border border-gray-100">
+                                            <span>Double Lots at</span>
+                                            <input
+                                                type="number"
+                                                name="compoundingFactor"
+                                                value={config.compoundingFactor}
+                                                onChange={handleChange}
+                                                className="w-12 border-b border-gray-300 focus:border-blue-500 bg-transparent text-center outline-none font-bold text-gray-900 px-0.5"
+                                            />
+                                            <span>% Profit</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-xs text-gray-600 bg-gray-50 rounded-lg p-2 border border-gray-100">
+                                            <span>Halve Lots at</span>
+                                            <input
+                                                type="number"
+                                                name="halvingFactor"
+                                                value={config.halvingFactor}
+                                                onChange={handleChange}
+                                                className="w-12 border-b border-gray-300 focus:border-blue-500 bg-transparent text-center outline-none font-bold text-gray-900 px-0.5"
+                                            />
+                                            <span>% Loss</span>
+                                        </div>
                                     </div>
                                 ) : (
                                     <div className='text-[10px] text-gray-400 italic p-2'>Compounding disabled</div>

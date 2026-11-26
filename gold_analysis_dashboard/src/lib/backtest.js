@@ -10,6 +10,7 @@
 
 export const CONTRACT_MULTIPLIER = 100; // Rs per Rs 1/10 g move on a 1 kg lot
 export const ROLL_DAYS = 7;
+export const DEFAULT_HALVING_FACTOR = 50; // % of equity lost since the last resize
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const daysBetween = (fromIso, toIso) => Math.round((new Date(toIso) - new Date(fromIso)) / DAY_MS);
@@ -121,10 +122,20 @@ export function simulateBacktest(fullData, config) {
         // Mark to market at the held contract's own close
         const currentEquity = cash + (heldClose - entryPrice) * CONTRACT_MULTIPLIER * currentLots;
 
-        // Compounding check (daily). Added lots are bought at today's close, so the average
-        // entry moves and no past gain is credited to them.
+        // Compounding check (daily, at the close). Both rules measure against the equity at the
+        // last resize (`baselineCapital`, the starting capital until the first one):
+        //  - double the lots once equity has gained compoundingFactor% of it. Added lots are
+        //    bought at today's close, so the average entry moves and no past gain is credited to them.
+        //  - halve the lots (whole lots, never below 1) once equity has lost halvingFactor% of it.
+        //    The lots sold book their P&L at today's close, so equity is unchanged by the resize.
+        // The baseline only ever moves to a positive equity: no margin calls are modelled, so equity
+        // can go below zero, and a % of a negative number would turn both rules upside down. While
+        // equity is at or below zero the halving repeats each day, down to 1 lot.
+        // Neither resize charges transactionCost; that is charged per lot on each roll.
         if (!config.neverCompound && config.isCompounding) {
-            if (currentEquity - baselineCapital >= (config.compoundingFactor / 100) * baselineCapital) {
+            const halvingFactor = config.halvingFactor ?? DEFAULT_HALVING_FACTOR;
+            if (config.compoundingFactor > 0 &&
+                currentEquity - baselineCapital >= (config.compoundingFactor / 100) * baselineCapital) {
                 entryPrice = (entryPrice + heldClose) / 2;
                 currentLots *= 2;
                 baselineCapital = currentEquity;
@@ -135,6 +146,24 @@ export function simulateBacktest(fullData, config) {
                     lots: currentLots,
                     equity: currentEquity,
                     note: "Profit Target Hit"
+                });
+            } else if (halvingFactor > 0 && currentLots > 1 &&
+                baselineCapital - currentEquity >= (halvingFactor / 100) * baselineCapital) {
+                const keptLots = Math.max(1, Math.floor(currentLots / 2));
+                const soldLots = currentLots - keptLots;
+                const realised = (heldClose - entryPrice) * CONTRACT_MULTIPLIER * soldLots;
+                cash += realised;
+                currentLots = keptLots;
+                if (currentEquity > 0) baselineCapital = currentEquity;
+                trades.push({
+                    date: today.date,
+                    type: "Compounding",
+                    contracts: "Position Halved",
+                    lots: currentLots,
+                    grossPnL: realised,
+                    netPnL: realised,
+                    equity: currentEquity,
+                    note: "Loss Limit Hit"
                 });
             }
         }
