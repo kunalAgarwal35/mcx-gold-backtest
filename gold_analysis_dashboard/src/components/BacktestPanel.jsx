@@ -11,6 +11,7 @@ const BacktestPanel = ({ fullData }) => {
         endDate: new Date().toISOString().split('T')[0],
         initialLots: 1,
         initialMarginPercent: 30,
+        marginCallPercent: 10,
         transactionCost: 1800,
         compoundingFactor: 200,
         halvingFactor: 50,
@@ -107,6 +108,10 @@ const BacktestPanel = ({ fullData }) => {
                                 <div>
                                     <span className="text-[10px] text-gray-400 font-semibold mb-1.5 block uppercase tracking-wider">Margin %</span>
                                     <InputField type="number" name="initialMarginPercent" value={config.initialMarginPercent} onChange={handleChange} />
+                                </div>
+                                <div>
+                                    <span className="text-[10px] text-gray-400 font-semibold mb-1.5 block uppercase tracking-wider" title="Exchange margin per lot, as % of its notional. When equity at a close cannot cover it, lots are cut to what equity covers; below one lot the position is closed. 0 turns margin calls off.">Margin Call %</span>
+                                    <InputField type="number" name="marginCallPercent" value={config.marginCallPercent} onChange={handleChange} />
                                 </div>
                             </div>
                         </div>
@@ -357,7 +362,7 @@ const BacktestPanel = ({ fullData }) => {
                                         <tr key={idx} className="hover:bg-gray-50/50 transition-colors group">
                                             <td className="py-3 px-4 text-left font-medium text-gray-600 whitespace-nowrap">{t.date}</td>
                                             <td className="py-3 px-4 whitespace-nowrap">
-                                                <span className={`inline-flex px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wide ${t.type === 'Compounding' ? 'bg-purple-50 text-purple-700 border border-purple-100' : 'bg-blue-50 text-blue-700 border border-blue-100'}`}>
+                                                <span className={`inline-flex px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wide ${t.type === 'Compounding' ? 'bg-purple-50 text-purple-700 border border-purple-100' : t.type === 'Margin Call' ? 'bg-red-50 text-red-700 border border-red-100' : 'bg-blue-50 text-blue-700 border border-blue-100'}`}>
                                                     {t.type}
                                                 </span>
                                             </td>

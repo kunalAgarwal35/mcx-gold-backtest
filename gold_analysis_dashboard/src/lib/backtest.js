@@ -11,6 +11,7 @@
 export const CONTRACT_MULTIPLIER = 100; // Rs per Rs 1/10 g move on a 1 kg lot
 export const ROLL_DAYS = 7;
 export const DEFAULT_HALVING_FACTOR = 50; // % of equity lost since the last resize
+export const DEFAULT_MARGIN_CALL_PERCENT = 10; // exchange margin per lot, % of its notional
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const daysBetween = (fromIso, toIso) => Math.round((new Date(toIso) - new Date(fromIso)) / DAY_MS);
@@ -52,6 +53,8 @@ export function simulateBacktest(fullData, config) {
     if (data.length < 2) return null;
 
     let currentLots = config.initialLots;
+    const halvingFactor = config.halvingFactor ?? DEFAULT_HALVING_FACTOR;
+    const marginCallPercent = config.marginCallPercent ?? DEFAULT_MARGIN_CALL_PERCENT;
     const startPrice = data[0].price_near;
     const initialCapital = startPrice * CONTRACT_MULTIPLIER * currentLots * (config.initialMarginPercent / 100);
 
@@ -92,9 +95,17 @@ export function simulateBacktest(fullData, config) {
         entryPrice = buyPrice;
     };
 
-    for (let i = 0; i < data.length; i++) {
-        const today = data[i];
-        const next = i + 1 < data.length ? data[i + 1] : null;
+    // Sell `soldLots` at today's close: their P&L is booked to cash, so equity is unchanged.
+    const sellLots = (soldLots, heldClose) => {
+        const realised = (heldClose - entryPrice) * CONTRACT_MULTIPLIER * soldLots;
+        cash += realised;
+        currentLots -= soldLots;
+        return realised;
+    };
+
+    // One trading day with an open position: roll if due, mark to market at the held contract's
+    // close, then apply a margin call or a compounding resize. Returns the day's closing equity.
+    const tradeDay = (today, next) => {
         let heldClose = closeOf(today, held);
 
         if (heldClose === null) {
@@ -122,38 +133,59 @@ export function simulateBacktest(fullData, config) {
         // Mark to market at the held contract's own close
         const currentEquity = cash + (heldClose - entryPrice) * CONTRACT_MULTIPLIER * currentLots;
 
+        // Margin call (daily, at the close; intraday breaches are not seen). The exchange margin
+        // for a lot is marginCallPercent% of its notional. When equity cannot cover the margin on
+        // the open lots, the broker cuts them to as many as equity covers, at today's close; when
+        // it cannot cover one lot the position is closed and the account stays flat. 0 turns this off.
+        const marginPerLot = marginCallPercent > 0
+            ? heldClose * CONTRACT_MULTIPLIER * (marginCallPercent / 100)
+            : 0;
+        if (marginPerLot > 0 && currentEquity < currentLots * marginPerLot) {
+            const lotsBefore = currentLots;
+            const keptLots = currentEquity > 0 ? Math.floor(currentEquity / marginPerLot) : 0;
+            const realised = sellLots(lotsBefore - keptLots, heldClose);
+            if (currentEquity > 0) baselineCapital = currentEquity;
+            trades.push({
+                date: today.date,
+                type: "Margin Call",
+                contracts: keptLots > 0 ? `Lots cut ${lotsBefore} → ${keptLots}` : `Position closed (${lotsBefore} lot${lotsBefore === 1 ? '' : 's'})`,
+                lots: keptLots,
+                grossPnL: realised,
+                netPnL: realised,
+                equity: currentEquity,
+                note: `Equity ${Math.round(currentEquity)} below margin ${Math.round(lotsBefore * marginPerLot)}`
+            });
+            return currentEquity;
+        }
+
         // Compounding check (daily, at the close). Both rules measure against the equity at the
         // last resize (`baselineCapital`, the starting capital until the first one):
-        //  - double the lots once equity has gained compoundingFactor% of it. Added lots are
-        //    bought at today's close, so the average entry moves and no past gain is credited to them.
+        //  - double the lots once equity has gained compoundingFactor% of it, if equity covers the
+        //    margin on the doubled lots (otherwise wait). Added lots are bought at today's close,
+        //    so the average entry moves and no past gain is credited to them.
         //  - halve the lots (whole lots, never below 1) once equity has lost halvingFactor% of it.
-        //    The lots sold book their P&L at today's close, so equity is unchanged by the resize.
-        // The baseline only ever moves to a positive equity: no margin calls are modelled, so equity
-        // can go below zero, and a % of a negative number would turn both rules upside down. While
-        // equity is at or below zero the halving repeats each day, down to 1 lot.
+        // The baseline only ever moves to a positive equity: equity can still gap below zero
+        // between two closes, and a % of a negative number would turn both rules upside down.
         // Neither resize charges transactionCost; that is charged per lot on each roll.
         if (!config.neverCompound && config.isCompounding) {
-            const halvingFactor = config.halvingFactor ?? DEFAULT_HALVING_FACTOR;
             if (config.compoundingFactor > 0 &&
                 currentEquity - baselineCapital >= (config.compoundingFactor / 100) * baselineCapital) {
-                entryPrice = (entryPrice + heldClose) / 2;
-                currentLots *= 2;
-                baselineCapital = currentEquity;
-                trades.push({
-                    date: today.date,
-                    type: "Compounding",
-                    contracts: "Position Doubled",
-                    lots: currentLots,
-                    equity: currentEquity,
-                    note: "Profit Target Hit"
-                });
+                if (currentEquity >= 2 * currentLots * marginPerLot) {
+                    entryPrice = (entryPrice + heldClose) / 2;
+                    currentLots *= 2;
+                    baselineCapital = currentEquity;
+                    trades.push({
+                        date: today.date,
+                        type: "Compounding",
+                        contracts: "Position Doubled",
+                        lots: currentLots,
+                        equity: currentEquity,
+                        note: "Profit Target Hit"
+                    });
+                }
             } else if (halvingFactor > 0 && currentLots > 1 &&
                 baselineCapital - currentEquity >= (halvingFactor / 100) * baselineCapital) {
-                const keptLots = Math.max(1, Math.floor(currentLots / 2));
-                const soldLots = currentLots - keptLots;
-                const realised = (heldClose - entryPrice) * CONTRACT_MULTIPLIER * soldLots;
-                cash += realised;
-                currentLots = keptLots;
+                const realised = sellLots(currentLots - Math.max(1, Math.floor(currentLots / 2)), heldClose);
                 if (currentEquity > 0) baselineCapital = currentEquity;
                 trades.push({
                     date: today.date,
@@ -167,6 +199,14 @@ export function simulateBacktest(fullData, config) {
                 });
             }
         }
+        return currentEquity;
+    };
+
+    for (let i = 0; i < data.length; i++) {
+        const today = data[i];
+        const currentEquity = currentLots === 0
+            ? cash // closed out by a margin call: flat for the rest of the window
+            : tradeDay(today, i + 1 < data.length ? data[i + 1] : null);
 
         if (currentEquity > peakEquity) peakEquity = currentEquity;
         const dd = peakEquity > 0 ? ((peakEquity - currentEquity) / peakEquity) * 100 : 0;
@@ -186,7 +226,7 @@ export function simulateBacktest(fullData, config) {
     const startD = new Date(config.startDate);
     const endD = new Date(config.endDate);
     const years = Math.max(1, (endD - startD) / (DAY_MS * 365.25));
-    // No margin calls are modelled, so equity can go below zero; report that as -100% a year.
+    // Equity can still gap below zero between two closes; report that as -100% a year.
     const cagr = finalEq > 0 ? (Math.pow(finalEq / initialCapital, 1 / years) - 1) * 100 : -100;
 
     const yoy = calculateYoY(equitySeries);
